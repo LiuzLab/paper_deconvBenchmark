@@ -1,2 +1,5 @@
 # paper_deconvBenchmark
-Including source code and raw data of the deconvolution benchmark paper. 
+
+We have included all the analysis of deconvolution benchmark paper in the manuscript Jin et al.,.
+
+All the data described in the manuscript will be avaible in the following link, 
