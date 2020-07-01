@@ -2,4 +2,6 @@
 
 We have included all the analysis of deconvolution benchmark paper in the manuscript Jin et al.,'A comprehensive benchmark of deconvolution methods for RNA-seq data '. 
 
-All the data described in the manuscript will be avaible in the following link, http(s)://s3.amazonaws.com/hj-s3/paper_deconvBenchmark/data.zip
+All the data described in the manuscript will be avaible in the following link, liuzlab.org/deconv/paper_deconvBenchmark/data 
+
+Please contact us at haijing.jin@bcm.edu, if you have any questions. 
