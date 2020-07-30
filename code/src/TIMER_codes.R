@@ -1,4 +1,7 @@
-# TIMER 
+## License GPL2.0
+## Developed by Bo Li, bli@jimmy.harvard.edu, 2016
+## TIMER Pipeline for analyzing immune cell components in the tumor microenvironment
+
 getPurityGenes <- function(dd,purity,thr.p=0.05,thr.c=0,mode='env'){
   tmp.dd=as.matrix(dd)
   tmp=lapply(rownames(tmp.dd),function(x)cor.test(as.numeric(tmp.dd[x,]),purity,method='s'))
