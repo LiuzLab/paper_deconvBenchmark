@@ -8,37 +8,35 @@ For datasets involved in Sim1 and Variance Analysis (GSE113590, GSE51984, GSE604
 For datasets involved in Sim2 and Sim3 (GSE51984, GSE60424, GSE64655, GSE115736, GSE118490), we created "_dat.RData", since the filtering process will be performed after data concatenation.
 Thus, for datasets that involved in both groups (Sim1, Sim2 and Sim3), we created two versions of preprocessed data.
 You can either process data from Raw quantification data or directly load processed data.
-We recommend users to uncompress Processed data under the ./data folder to avoid path parameter reassignment of scripts under ./code/varStructure/
+We recommend users to uncompress Processed data under the ./data folder to avoid path parameter reassignment.
 
 2. Params Data
 Params data contain basic settings of each simulation framework such as datasets, cellular component, factors, units and gene index (Details are in the Supplementary Table 3 of the publication)
 3 sets of params are created for 3 simulation frameworks: Sim1, Sim2 and Sim3.
-You can either create "SimX"_params.RData from "SimX"_params_set.R scripts.
-Or you can directly load "SimX"_params.RData under ./data folder.
+You can generate params data from "SimX"_params_set.R scripts.
+Output corresponds to "SimX"_env.RData
 
 3. Reference Data
 Reference data contains reference used for deconvolution analysis.
 Type of reference objects include: reference profile, averaged reference profile, signature gene sets, marker gene sets and reference sample annotation.
-You can either create reference data from "SimX"_refGenerator.R scripts.
-Or you can directly load "SimX"_ref.RData under ./data folder.
+You can generate reference data from "SimX"_refGenerator.R scripts.
+Output corresponds to "SimX"_ref.RData
 
 4. Weight Data
 Cellular component proportion data from 3 simulated frameworks.
-All data are stored under ./data folder.
-Sim1_W.txt, 
+sim1_W.txt, sim2_W_orthog.rds and sim2_W_real.rds
 
 5. Mix Data
 In silico mixture data of 3 simulated frameworks.
-You can either create mixture data from "SimX"_mix.R scripts.
-Or you can directly load "SimX"_mix.RData under ./data folder.
+You can generate mixture data from "SimX"_mix.R scripts.
+Output corresponds to "SimX"_mix.RData
 
 6. Deconvolution Estimation Data
 Estimation results of deconvolution analysis. 
+You can generate deconvolution data from "SimX"_deconvolution_rPlatform.R and "SimX"_deconvolution_crossPlatform.R scripts.
+Output corresponds to "SimX"_estW.RData 
 
-7. Evaluation Data
-Evaluation of deconvolution estimations based on two evaluation metrics: correlation and mAD. 
-
-8. Other Data
+7. Other Data
 sim1_diagnostics_simModel.RData are variance analysis for Sim1_simModel.
-You can either generate this dat from "sim1_diagnostics_simModel.R"
-Or you can directly load the data under ./data/ folder. 
+You can generate diagnostic data from "sim1_diagnostics_simModel.R"
+
