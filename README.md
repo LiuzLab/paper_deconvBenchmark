@@ -4,4 +4,9 @@ We have included all the analysis of deconvolution benchmark paper in the manusc
 
 All the data described in the manuscript will be avaible in the following link, http://liuzlab.org/deconv/paper_deconvBenchmark/data 
 
+Raw quantification data are stored as Raw.tar.gz
+
+To free yourself from path parameter re-assignment, please store all raw data under ./Raw and intermediatory .Rdata under ./data
+
+
 Please contact us at haijing.jin@bcm.edu, if you have any questions. 
