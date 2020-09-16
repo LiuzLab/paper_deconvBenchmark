@@ -1,14 +1,12 @@
 load("./output/Sim2/sim2_estW.RData")
-load("./output/Sim2/sim2_mix.RData")
+load("./output/sim2_mix.RData")
 source("./code/src/Generics_all.R")
 source("./code/src/Functions_all.R")
 source("./code/src/Methods_evaluation.R")
 library(pheatmap)
-
 unit <- sim2_params_ob@unit
 mix_type <- sim2_params_ob@mix_type
-methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "TIMER", "MuSiC", "LinSeed") 
-
+methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "CIBERSORTx", "TIMER", "MuSiC", "LinSeed") 
 line_color_manual <- c("#999999", "#FF9933", "#56B4E9", "#009E73", "#CC00FF", "#0072B2", "#993300", "#99CC33", "#FF0000")
 path <- "./output/Sim2/"
 # calculate evaluation metrics 
@@ -21,7 +19,8 @@ for(u in 1:length(unit)){
   #    mad_name <- paste("sim2", "madList", methods[m], mix_type[s], unit[u], sep = "_")
       cellcor_name <- paste("sim2", "cellcorList", methods[m], mix_type[s], unit[u], sep = "_")
       cellmad_name <- paste("sim2", "cellmadList", methods[m], mix_type[s], unit[u], sep = "_")
-      
+      cellad_name <- paste("sim2", "celladList", methods[m], mix_type[s], unit[u], sep = "_")
+        
       truth_name <- paste("sim2", "W", mix_type[s], sep ="_")
       
      # assign(cor_name, deconv_evaluation("cor",sim2_params_ob, get(estW_name), get(truth_name)))
@@ -29,6 +28,7 @@ for(u in 1:length(unit)){
       
       assign(cellcor_name, deconv_evaluation("cellcor", sim2_params_ob, get(estW_name), get(truth_name)))
       assign(cellmad_name, deconv_evaluation("cellmad", sim2_params_ob, get(estW_name), get(truth_name)))
+      assign(cellad_name, deconv_evaluation("cellad", sim2_params_ob, get(estW_name), get(truth_name)))
     }
   }
 }
@@ -152,7 +152,6 @@ p_concat_concat <- cowplot::plot_grid(plotlist = p_concat, ncol = 1)
 file_name <- paste0(path,"sim2_heatmap_cellmad_all.pdf")
 ggsave(p_concat_concat, filename = file_name ,width = 12,height = 18)
 
-
 # sample scatter 
 # scatter plots
 for(u in 1:length(unit)){
@@ -221,4 +220,32 @@ file_name <- paste0(path, "sim2_sampleScatter_", mix_type[s], "_", "tpm", "_", "
 ggsave(filename = file_name, p_concat_concat, width = 10, height = 13)
 
 
+for(s in 1:length(mix_type)){
+  for(i in 1:length(n_comp)){
+    p_list <- list()
+    for(m in 1:length(methods)){
+      eval_list_name <- paste("sim2", "celladList", methods[m], mix_type[s], unit[u], sep = "_")
+      eval_list <- get(eval_list_name)
+      
+      boxplot(t(eval_list[[i]]))
+      
+      eval_gg <- data.frame()
+      eval_gg <- melt(eval_list[[i]])
+      colnames(eval_gg) <- c("celltype", "mixture_idx", "ad")
+      p_list[[m]] <- ggplot(eval_gg, aes(x = celltype, y = ad, fill = celltype)) + 
+        geom_boxplot(alpha = 0.6) +
+        stat_summary(fun.y = mean, geom = "point", shape=20, size=2, color="red", fill="red") +
+        theme_bw() + scale_fill_brewer(palette="Set3") + xlab("") + ggtitle(methods[m]) + 
+        theme(plot.title = element_text(hjust = 0.5), 
+              axis.title = element_text(size = 15), 
+              axis.text.x = element_text(angle = 45, vjust = 0.6),
+              text = element_text(size = 15), legend.position = "none")
+        
+    }
+    p_grid <- cowplot::plot_grid(plotlist = p_list, nrow = 5)
+    file_name <- paste0(path, "sim2_ad_boxPlot_", mix_type[s], "_", "tpm", "_", "Comp", n_comp[i], ".pdf")
+    ggsave(filename = file_name, p_grid, width = 14, height = 20)
+    }
+}
+    
 save.image("./output/Sim2/sim2_evaluation_submission.RData")
