@@ -1,5 +1,7 @@
 # for deconvolution of sim1 simModel - methods include all R platform based deconvolution algorithms 
-setwd("/mnt/data/haijing/simDeconv/paper_deconvBenchmark")
+# This scripts takes a while to finish. Therefore, running the scripts in background is recommended. 
+# Since all path will be absolute, please make sure to reset the path accordingly. 
+setwd("/abs_path/") # Please set the path to the absolute path of your working directory. 
 load("./output/Sim1/simModel/sim1_mix_simModel.RData")
 source("./code/src/Generics_all.R")
 source("./code/src/Classes_all.R")
@@ -41,6 +43,4 @@ for(u in 1:length(unit)){
   }
 }
 
-
-save.image(file = "/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/sim1_simModel_deconvolution_rPlatform.RData")
-save(list = ls(pattern = "estW"), file = "/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/simModel/sim1_simModel_estW.RData")
+save(list = ls(pattern = "estW"), file = "/abs_path/output/Sim1/simModel/sim1_simModel_estW.RData") # Please set the path to the targeted directory.

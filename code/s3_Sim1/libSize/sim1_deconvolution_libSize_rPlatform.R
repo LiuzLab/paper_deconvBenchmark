@@ -1,6 +1,7 @@
 # for deconvolution of sim1 libSize - methods include all R platform based deconvolution algorithms 
-setwd("/mnt/data/haijing/simDeconv/paper_deconvBenchmark")
-load("./output/Sim1/libSize/sim1_mix_libSize.RData")
+# We recommend to run this script in background as it takes a while to finish. 
+setwd("/abs_path/") # Please set the path to the absolute path of your working directory. 
+load("./output/Sim1/libSize/sim1_mix_libSize.RData") 
 source("./code/src/Generics_all.R")
 source("./code/src/Methods_deconvolution.R")
 source("./code/src/Functions_all.R")
@@ -32,5 +33,4 @@ for(u in 1:length(unit)){
                                           mix_list = get(input_mix_name)))
     }
 }
-save.image(file = "/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/sim1_libSize_deconvolution_rPlatform.RData")
-save(list = ls(pattern = "estW"), file = "/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/libSize/sim1_libSize_estW.RData")
+save(list = ls(pattern = "estW"), file = "/abs_path/output/Sim1/libSize/sim1_libSize_estW.RData") # Please set the path to the targeted path. 

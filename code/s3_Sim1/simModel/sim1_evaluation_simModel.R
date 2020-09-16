@@ -1,4 +1,4 @@
-load("./output/Sim1/simModel/sim1_simModel_estW.RData")
+load("./output/Sim1/simModel/sim1_simModel_estW.RData") # Please set the path to the targeted path. 
 load('./output/Sim1/simModel/sim1_mix_simModel.RData')
 source("./code/src/Generics_all.R")
 source("./code/src/Functions_all.R")
@@ -8,12 +8,12 @@ library(gridExtra)
 # Define parameters 
 unit <- sim1_params_ob@unit
 sim_model <- sim1_params_ob@sim_model
-path <- "./output/Sim1/simModel/"
-methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "TIMER", "MuSiC", "CAMfree", "LinSeed") 
+path <- "./output/Sim1/simModel/" # Please set the path to the targeted path. 
+methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "CIBERSORTx", "TIMER", "MuSiC", "CAMfree", "LinSeed") 
 nGrid <- length(sim1_params_ob@grid)
 nDataset <- nMarker <- length(sim1_params_ob@dataset_name)
 celltype <- sim1_params_ob@celltype
-line_color_manual <- c("#999999", "#FF9933", "#56B4E9", "#009E73", "#CC00FF", "#0072B2", "#993300", "#99CC33", "#000000", "#FF0000")
+line_color_manual <- c("#999999", "#FF9933", "#56B4E9", "#009E73", "#CC00FF", "#0072B2", "#0064ff", "#993300", "#99CC33", "#000000", "#FF0000")
 metric_col <- c("all", "T", "B", "Mono")
 # Calculate evaluation metrics
 for(u in 1:length(unit)){
@@ -263,4 +263,4 @@ p_concat_concat <- cowplot::plot_grid(plotlist = p_concat, ncol = 1)
 file_name = paste0(path, "sim1_simModel_heatmap_cellmad_noise.pdf")
 ggsave(p_concat_concat, filename = file_name ,width = 15,height=20)
 
-save.image("./output/sim1_evaluation_simModel_submission.RData")
+save.image("./output/Sim1/sim1_evaluation_simModel_submission.RData") # Please set the path to the targeted path. 

@@ -1,5 +1,5 @@
-load("./output/Sim1/libSize/sim1_libSize_estW.RData")
-load('./output/Sim1/libSize/sim1_mix_libSize.RData')
+load("./output/sim1_mix_libSize.RData")
+load('./output/Sim1/libSize/sim1_libSize_estW.RData') # Please set the path to the targeted path. 
 source("./code/src/Generics_all.R")
 source("./code/src/Functions_all.R")
 source("./code/src/Methods_evaluation.R")
@@ -7,12 +7,12 @@ library(pheatmap)
 library(gridExtra)
 # Define parameters 
 unit <- sim1_params_ob@unit
-path <- "./output/Sim1/libSize/"
+path <- "./output/Sim1/libSize/" # Please set the path to the targeted path. 
 nGrid <- length(sim1_params_ob@grid)
 nDataset <- nMarker <- length(sim1_params_ob@dataset_name)
 metric_col <- c("all", "T", "B", "Mono")
-line_color_manual <- c("#999999", "#FF9933", "#56B4E9", "#009E73", "#CC00FF", "#0072B2", "#993300", "#99CC33", "#000000", "#FF0000")
-methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "TIMER", "MuSiC", "CAMfree", "LinSeed") 
+line_color_manual <- c("#999999", "#FF9933", "#56B4E9", "#009E73", "#CC00FF", "#0072B2", "#0064ff", "#993300", "#99CC33", "#000000", "#FF0000")
+methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "DeconRNASeq", "CIBERSORT", "CIBERSORTx", "TIMER", "MuSiC", "CAMfree", "LinSeed") 
 for(u in 1:length(unit)){
     for(m in 1:length(methods)){
       estW_name <- paste("sim1", "estW", methods[m], "libSize", unit[u], sep = "_")
@@ -152,4 +152,4 @@ p <- ggplot(data = rank_mat_gg, aes(x = unit, y = rank, group = methods)) +
 file_name = paste0(path,"sim1_libSize_rank_cellmad_all_mean.pdf")
 ggsave(p, filename = file_name ,width = 4,height=4)
 
-save.image("./output/sim1_evaluation_libSize_submission.RData")
+save.image("./output/Sim1/sim1_evaluation_libSize_submission.RData") # Please set the path to the targeted path. 
