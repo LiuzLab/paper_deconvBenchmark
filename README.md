@@ -20,7 +20,7 @@ We organized the folder based on the analysis.
 
 The recommended execution order is indicated in the prefix(s1, s2, ..., s5) of the folder name.  
 
-You can start the analysis any step as long as you load relevant intermediatory .RData to the ./data folder. 
+You can start the analysis at any step after loading relevant intermediatory .RData to the ./data folder. 
 
 #
 Please contact us at haijing.jin@bcm.edu, if you have any questions. 
