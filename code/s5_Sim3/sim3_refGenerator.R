@@ -1,5 +1,6 @@
 # Generate reference, reference annotation and marker genes for sim3
-setwd("/mnt/data/haijing/simDeconv/paper_deconvBenchmark")
+# We recommend to run this script in background as it takes a while to finish. 
+setwd("/abs_path/") # Please set the path to the absolute path of your working directory. 
 load("./output/Sim3/sim3_env.RData")
 source("./code/src/Classes_all.R")
 source("./code/src/Generics_all.R")

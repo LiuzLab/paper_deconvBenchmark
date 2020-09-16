@@ -1,12 +1,12 @@
 load("./output/Sim3/sim3_estW.RData")
-load("./output/Sim3/sim3_mix.RData")
+load("./output/sim3_mix.RData")
 source("./code/src/Generics_all.R")
 source("./code/src/Functions_all.R")
 source("./code/src/Methods_evaluation.R")
 library(pheatmap)
 
 unit <- sim3_params_ob@unit
-methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "EPICabsolute", "DeconRNASeq",  "CIBERSORT", "TIMER","TIMERtumor", "MuSiC", "LinSeed") 
+methods <- c("DSA", "MMAD", "CAMmarker", "EPIC", "EPICabsolute", "DeconRNASeq",  "CIBERSORT", "CIBERSORTx", "TIMER","TIMERtumor", "MuSiC", "LinSeed") 
 n_comp <- sim3_params_ob@n_comp
 mix_type <- sim3_params_ob@mix_type
 path <- "./output/Sim3/"
