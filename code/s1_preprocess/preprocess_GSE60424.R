@@ -1,5 +1,5 @@
 # preprocess GSE60424 
-source("./R/Functions_all.R")
+source("./code/src/Functions_all.R")
 GSE60424_path = "./Raw/GSE60424/RSEM_quant/"
 # read expr from .txt file (output of RSEM)
 # unit: count, tpm and fpkm 

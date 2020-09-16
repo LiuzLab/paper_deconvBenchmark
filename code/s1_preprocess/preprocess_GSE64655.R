@@ -1,5 +1,5 @@
 # preprocess GSE64655 
-source("./R/Functions_all.R")
+source("./code/src/Functions_all.R")
 GSE64655_path <- c("./Raw/GSE64655/RSEM_quant/")
 # read expr from .txt file (output of RSEM)
 # unit: count, tpm and fpkm 

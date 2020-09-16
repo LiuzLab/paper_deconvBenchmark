@@ -1,5 +1,5 @@
 # preprocess GSE115736
-source("./R/Functions_all.R")
+source("./code/src/Functions_all.R")
 GSE115736_path <- c("./Raw/GSE115736/RSEM_quant/")
 gene_file <- list.files(path=GSE115736_path,pattern="genes.results")
 # read expr from .txt file (output of RSEM)
