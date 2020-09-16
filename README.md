@@ -12,7 +12,6 @@ To free yourself from path reassignment, please store all raw data under ./Raw f
 Detailed data description are in the file Data_description.txt
 
 ## Library
-Please install all libraries before running scripts. 
 
 All required libraries are listed in the file Libraries.txt 
 
@@ -20,6 +19,8 @@ All required libraries are listed in the file Libraries.txt
 We organized the folder based on the analysis. 
 
 The recommended execution order is indicated in the prefix(s1, s2, ..., s5) of the folder name.  
+
+You can start the analysis any step as long as you load relevant intermediatory .RData to the ./data folder. 
 
 #
 Please contact us at haijing.jin@bcm.edu, if you have any questions. 
