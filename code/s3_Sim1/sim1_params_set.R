@@ -52,4 +52,4 @@ for(k in celltype){
   }
 }
 # 6. save the environment for the simulation 1. 
-save.image(file = "./output/Sim1/sim1_params.RData")
+save.image(file = "./output/Sim1/sim1_env.RData")

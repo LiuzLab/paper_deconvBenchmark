@@ -1,5 +1,5 @@
 # Generate reference, reference annotation and marker genes for Sim1
-load("./output/Sim1/sim1_params.RData")
+load("./output/Sim1/sim1_env.RData")
 source("./code/src/Functions_all.R")
 source("./code/src/Generics_all.R")
 source("./code/src/Methods_simulation.R")
