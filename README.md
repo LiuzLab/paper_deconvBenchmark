@@ -15,12 +15,16 @@ Detailed data description are in the file Data_description.txt
 
 All required libraries are listed in the file Libraries.txt 
 
-### Execution order 
+## Execution order 
 We organized the folder based on the analysis. 
 
 The recommended execution order is indicated in the prefix(s1, s2, ..., s5) of the folder name.  
 
 You can start the analysis at any step after loading relevant intermediatory .RData to the ./data folder. 
+
+## Output
+We recommend users to download ./Output folder so that you don't need to suffer from non-existent-folder error. 
+
 
 #
 Please contact us at haijing.jin@bcm.edu, if you have any questions. 
