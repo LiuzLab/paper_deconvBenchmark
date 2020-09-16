@@ -6,7 +6,7 @@ All the data described in the manuscript will be avaible in the following link, 
 
 Raw quantification data are stored as Raw.tar.gz
 
-To free yourself from path parameter re-assignment, please store all raw data under ./Raw and intermediatory .Rdata under ./data
+To free yourself from path reassignment, please store all raw data under ./Raw folder and intermediatory .Rdata under ./data folder.
 
 
 Please contact us at haijing.jin@bcm.edu, if you have any questions. 
