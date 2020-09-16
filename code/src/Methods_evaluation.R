@@ -610,7 +610,7 @@ setMethod(f = "wrap_eval_summary",
 # sim2 related functions 
 setMethod(f = "deconv_evaluation",
           signature = c("character", "sim2_params", "list", "list"),
-          definition = function(eval_type = c("cor", "mad", "cellcor", "cellmad"), sim_param, est_W, truth){
+          definition = function(eval_type = c("cor", "mad", "cellcor", "cellmad", "cellad"), sim_param, est_W, truth){
             #@ eval_type: evalution type 
             #@ sim_param: sim_params_ob 
             #@ est_W: estimated weights 
@@ -641,6 +641,12 @@ setMethod(f = "deconv_evaluation",
               w_eval <- vector()
               for(i in 1:length(est_W)){
                 w_eval[i] <- calc.mad(est_W[[i]], truth[[i]])
+              }
+            }
+            else if(eval_type == "cellad"){
+              w_eval <- list()
+              for(i in 1:length(est_W)){
+                w_eval[[i]] <- calc.ad_celltype(est_W[[i]], truth[[i]], n_comp[i])
               }
             }
             return(w_eval)
@@ -879,6 +885,3 @@ setMethod( f = "evaluation_mat_celltype",
              return(eval_val)
            }
 )
-
-
-

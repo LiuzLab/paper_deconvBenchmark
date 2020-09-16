@@ -561,6 +561,24 @@ calc.mad_celltype <- function(est, truth,n){
   return(mad_result)
 }
 
+calc.ad_celltype <- function(est, truth, n){
+  est <- as.matrix(est)
+  truth <- as.matrix(truth)
+  if(nrow(truth) != n){
+    truth <- t(truth)
+  }
+  ad_result <- matrix(data = 1, nrow = n, ncol = ncol(truth))
+  if (is.na(est) || !length(est) == length(truth)) {
+    ad_result <- matrix(data = 1, nrow = n, ncol = ncol(truth))
+  } else if (dim(est)[1] == n && length(est) == length(truth)) {
+    ad_result <- abs(est - truth)
+  } else if (dim(est)[2] == n && length(est) == length(truth)) {
+    ad_result <- abs(t(est) - truth)
+  }
+  rownames(ad_result) <- rownames(truth)
+  return(ad_result)
+}
+
 cpm.HJ <- function(x_count){
   # This function is slower than the cpm from edgeR package
   # Suggests for double-check with edgeR::cpm() results

@@ -17,21 +17,21 @@ setMethod( f = "deconv_run_marker",
                est_w <- tryCatch({AfromMarkers(mix, marker, scaleRecover = TRUE)},
                                  error = function(e) NA)
              }
-             else if(method_name %in% c("deconf", "ssKL", "ssFrobenius")){
-               library(CellMix)
-               # transform mix and marker 
-               mix <- ExpressionMix(mix + 0.1)
-               marker <- MarkerList(marker)
+#             else if(method_name %in% c("deconf", "ssKL", "ssFrobenius")){
+#               library(CellMix)
+#               # transform mix and marker 
+#               mix <- ExpressionMix(mix + 0.1)
+#               marker <- MarkerList(marker)
                
-               cellmix_wrap <- function(expr_mat, marker_mat, method_name){
+#               cellmix_wrap <- function(expr_mat, marker_mat, method_name){
                  # retrieve the weights and process failed result 
-                 tryCatch({
-                   return(coef(ged(expr_mat, marker_mat, method_name, log = FALSE, rng = 1234, nrun = 10)))
-                 }, error = function(e) NA)
-               }
-               
-               est_w <- cellmix_wrap(mix, marker, method_name)
-             }
+#                 tryCatch({
+#                   return(coef(ged(expr_mat, marker_mat, method_name, log = FALSE, rng = 1234, nrun = 10)))
+#                 }, error = function(e) NA)
+#               }
+#               
+#               est_w <- cellmix_wrap(mix, marker, method_name)
+#             }
 
              return(est_w)
            }
@@ -164,15 +164,21 @@ setMethod(f = "deconv_run_crossPlatform",
             if(method_name == "MMAD"){
               # run the sim1_wrapMMAD
               # function sim1_wrapMMAD(mix_name_prefix,ref_name_prefix,nMarker, nDataset, nGrid, dat_path, output_path)
-              MMAD_command <- paste(paste0('cd /mnt/data/haijing/simDeconv/otherPlatform/MMAD/; nohup matlab -nosplash -nodisplay -nodesktop -r "try; ', sim_prefix, '_wrapMMAD('),
+              MMAD_command <- paste(paste0('cd /mnt/data/haijing/simDeconv/paper_deconvBenchmark/code/otherPlatform/MMAD/; nohup matlab -nosplash -nodisplay -nodesktop -r "try; ', sim_prefix, '_wrapMMAD('),
                                     mix_name_prefix, ',', ref_name_prefix, ',', dat_path, ',', output_path, paste0(');catch;end;quit" > ', logfile_name, '.out &'),sep = '\'') 
               
               system(MMAD_command)
             }
             else if(method_name == "CIBERSORT"){
-              CIBERSORT_command <- paste0("cd /mnt/data/haijing/simDeconv/otherPlatform/CIBERSORT/; nohup bash ", sim_prefix, "_wrapCIBERSORT.sh ", dat_path," ", output_path, " ", mix_name_prefix, " ", ref_name_prefix, " > ", logfile_name, ".out &")
+              CIBERSORT_command <- paste0("cd /mnt/data/haijing/simDeconv/paper_deconvBenchmark/code/otherPlatform/CIBERSORT/; nohup bash ", sim_prefix, "_wrapCIBERSORT.sh ", dat_path," ", output_path, " ", mix_name_prefix, " ", ref_name_prefix, " > ", logfile_name, ".out &")
               system(CIBERSORT_command)
             }
+            
+            else if(method_name == "CIBERSORTx"){
+              CIBERSORTx_command <- paste0("cd /mnt/data/haijing/simDeconv/paper_deconvBenchmark/code/otherPlatform/CIBERSORTx/; nohup bash ", sim_prefix, "_wrapCIBERSORTx.sh ", dat_path," ", output_path, " ", mix_name_prefix, " ", ref_name_prefix, " > ", logfile_name, ".out &")
+              system(CIBERSORTx_command)
+            }
+
             
           })
 
@@ -222,7 +228,7 @@ setMethod(f = "deconv_write",
               }
               
             }
-            else if(method_name == "CIBERSORT"){
+            else if(method_name %in% c("CIBERSORT", "CIBERSORTx")){
               
               if(file_type == "mix"){
                 first_row <- c("!Sample_title", paste0("Mixture", 1:ncol(dat)))
@@ -251,11 +257,13 @@ setMethod(f = "deconv_read",
           definition = function(file_name, method_name, read_path, nsim, nComp){
             
             full_file_name = paste0(read_path, file_name)
-            if(method_name == "MMAD"){
+            if (method_name == "MMAD") {
               est_W <- read.table(full_file_name, header = FALSE, sep = "\t")[, 1:nsim]
-            }
-            else if(method_name == "CIBERSORT"){
+            } else if (method_name == "CIBERSORT") {
               est_W <- tryCatch({read.table(full_file_name, header = FALSE, sep = "\t", skip = 10)[, 1:nComp + 1]
+              }, error = function(e) NA)
+            } else if (method_name == "CIBERSORTx"){
+              est_W <- tryCatch({read.table(full_file_name, header = TRUE, sep = "\t")[, 1:nComp + 1]
               }, error = function(e) NA)
             }
             return(est_W)
@@ -367,8 +375,7 @@ setMethod(f = "wrap_ref_write",
                 file_name = paste0(prefix, "_D", i, ".txt")
                 deconv_write(ref, method_name = method_name, file_type = file_type, file_name = file_name, write_path = write_path)
               }
-            }
-            else if(method_name == "CIBERSORT"){
+            } else if (method_name %in% c("CIBERSORT", "CIBERSORTx")){
               gene_id <- sim_param@gene_id
               for(i in 1:length(ref_list)){
                 ref <- as.matrix(ref_list[[i]])
@@ -390,8 +397,7 @@ setMethod(f = "wrap_ref_write",
                 file_name = paste0(prefix, "_C", i, ".txt")
                 deconv_write(ref, method_name = method_name, file_type = file_type, file_name = file_name, write_path = write_path)
               }
-            }
-            else if(method_name == "CIBERSORT"){
+            }else if(method_name %in% c("CIBERSORT", "CIBERSORTx")){
               gene_id <- sim_param@gene_id
               for(i in 1:length(ref_list)){
                 ref <- as.matrix(ref_list[[i]])
