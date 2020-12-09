@@ -502,9 +502,9 @@ calc.cor_celltype <- function(est, truth,n){
   else if(dim(est)[1] == n && length(est) == length(truth)){
     for(i in 1:n){
       x <- as.numeric(est[i,])
-      x[is.na(x)] <- -1
+#      x[is.na(x)] <- -1
       y <- as.numeric(truth[i,])
-      y[is.na(y)] <- -1
+#      y[is.na(y)] <- -1
       cor_result[i] <- cor(x, y)
     }
     names(cor_result) <- rownames(truth)
@@ -512,9 +512,9 @@ calc.cor_celltype <- function(est, truth,n){
   else if(dim(est)[2] == n && length(est) == length(truth)){
     for(i in 1:n){
       x <- as.numeric(est[,i])
-      x[is.na(x)] <- -1
+#      x[is.na(x)] <- -1
       y <- as.numeric(truth[i,])
-      y[is.na(y)] <- -1
+#      y[is.na(y)] <- -1
       cor_result[i] <- cor(x, y)
     }
     names(cor_result) <- rownames(truth)
@@ -539,9 +539,9 @@ calc.mad_celltype <- function(est, truth,n){
   else if(dim(est)[1] == n && length(est) == length(truth)){
     for(i in 1:n){
       x <- as.numeric(est[i,])
-      x[is.na(x)] <- 1
+#      x[is.na(x)] <- 1
       y <- as.numeric(truth[i,])
-      y[is.na(y)] <- 1
+#      y[is.na(y)] <- 1
       mad_result[i] <- sum(abs(x - y))/length(x)
     }
     names(mad_result) <- rownames(truth)
@@ -549,9 +549,9 @@ calc.mad_celltype <- function(est, truth,n){
   else if(dim(est)[2] == n && length(est) == length(truth)){
     for(i in 1:n){
       x <- as.numeric(est[,i])
-      x[is.na(x)] <- 1
+#     x[is.na(x)] <- 1
       y <- as.numeric(truth[i,])
-      y[is.na(y)] <- 1
+#      y[is.na(y)] <- 1
       mad_result[i] <- sum(abs(x - y))/length(x)
     }
     names(mad_result) <- rownames(truth)

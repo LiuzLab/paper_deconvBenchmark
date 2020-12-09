@@ -39,4 +39,4 @@ timer_purity_genes <- getPurityGenes(dd = hct_timer_mix, purity = rep(hct_prop, 
 
 # 
 saveRDS(timer_purity_genes, file = "./output/Sim3/timer_purity_genes.rds")
-save.image("./output/Sim3/sim3_TIMERref.RData")
+
