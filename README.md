@@ -3,7 +3,7 @@
 We have included all the analysis of the deconvolution benchmark paper in the manuscript Jin et al., "A comprehensive benchmark of deconvolution methods for RNA-seq data". 
 
 ## Data
-All the data described in the manuscript will be available in the following link, http://liuzlab.org/deconv/paper_deconvBenchmark/data 
+All the data described in the manuscript will be available in the following figshare link, https://figshare.com/projects/Data_for_the_manuscript_A_benchmark_for_RNA-seq_deconvolution_analysis_under_dynamic_testing_environments_/96908
 
 Raw quantification data are stored as Raw.tar.gz
 
