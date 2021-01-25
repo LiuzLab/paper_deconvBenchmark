@@ -13,7 +13,7 @@ Detailed data description are in the file Data_description.txt
 
 ## Library
 
-All required libraries are listed in the file Libraries.txt 
+All required libraries are listed in the Libraries.R file. Please source this file before you start any analysis.  
 
 ## Execution order 
 We organized the folder based on the analysis. 
