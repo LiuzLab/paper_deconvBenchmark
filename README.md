@@ -18,9 +18,11 @@ All required libraries are listed in the file Libraries.txt
 ## Execution order 
 We organized the folder based on the analysis. 
 
-The recommended execution order is indicated in the prefix(s1, s2, ..., s5) of the folder name.  
+The recommended execution order is indicated in the prefix(s1, s2, ..., s5) of the folder name. The execution order of the scripts under each subfolder (i.e. s1) is in the *_README.md file. 
 
 You can start the analysis at any step after loading relevant intermediate .RData to the ./data folder. 
+
+
 
 ## Output
 We suggest downloading the ./output folder so that you don't need to suffer from non-existent-folder error. 
