@@ -26,7 +26,7 @@ sim3_params_ob@gene_id <- rownames(sim3_all_expr_count)
 #--------------------------------set additional feature variable for simulation 2 
 # set the eff_length (it will take a while to finish)
 # returns a 2-column matrix, the first is the length and the second column is the effective length
-sim3_eff_length <- set_eff_length(sim3_params_ob, path = "/mnt/data/haijing/simDeconv/Raw/")
+sim3_eff_length <- set_eff_length(sim3_params_ob, path = "./Raw")
 sim3_eff_length_mean <- Reduce("+", sim3_eff_length)/length(sim3_eff_length)
 # third extract sample annotations from each dataset  
 sim3_anno_inf <- get_celltype_anno(sim3_params_ob, suffix = "_dat_raw")
