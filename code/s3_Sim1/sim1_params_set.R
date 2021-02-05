@@ -21,7 +21,7 @@ sim1_params_ob@extract_pattern_immune <- c(T = "T-cells|CD4|CD8|T cells",B = "B-
 #--------------------------------set additional feature variable for simulation 1 
 # set the eff_length (it will take a while to finish)
 # returns a 2-column matrix, the first is the length and the second column is the effective length
-sim1_eff_length <- set_eff_length(sim1_params_ob, path = "/mnt/data/haijing/simDeconv/Raw/")
+sim1_eff_length <- set_eff_length(sim1_params_ob, path = "./Raw")
 # set the celltype_anno 
 sim1_celltype_anno <- get_celltype_anno(sim1_params_ob,"_dat")
 #--------------------------------extract all cell type specific profiles for simulation 
