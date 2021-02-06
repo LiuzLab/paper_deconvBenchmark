@@ -19,8 +19,7 @@ for(u in 1:length(unit)){
     ref_anno_name <- paste("sim1", "ref", "anno", "cibersort", sep = "_")
     marker_name <- paste("sim1", "marker", "countNorm", sep = "_")
     for(m in 1:length(methods)){
-      
-#      write_path <- paste0("/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/simModel/", methods[m])
+    
       write_path <- paste0("/abs_path/output/Sim1/simModel/", methods[m]) # Please set the path to the targeted path. 
       # Step 1: write mix
       wrap_mix_write(mix_list = get(mix_name), prefix = mix_name, sim_param = sim1_params_ob, file_type = "mix", method_name = methods[m], write_path = write_path)
@@ -55,7 +54,7 @@ for(u in 1:length(unit)){
     mix_name <- paste("sim1", "M", sim_model[s], unit[u], sep = "_")
     
     for( m in 1:length(methods)){
-#      read_path <- paste0("/mnt/data/haijing/simDeconv/paper_deconvBenchmark/output/Sim1/simModel/", methods[m],"/out/")
+
       read_path <- paste0("/abs_path/output/Sim1/simModel/", methods[m],"/out/") # Please set the path to the targeted directory. 
       result_name <- paste("sim1", "estW", methods[m], sim_model[s], unit[u], sep = "_")
       assign(result_name, wrap_result_read(method_name = methods[m],
