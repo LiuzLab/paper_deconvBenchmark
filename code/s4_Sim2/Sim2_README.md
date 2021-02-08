@@ -7,4 +7,4 @@ Please execute scripts in the following sequence:
 5. sim2_deconvolution_crossPlatform.R 
 6. sim2_evaluation.R
 
-The range of cell proportions from https://www.stemcell.com/media/files/wallchart/WA10006-Frequencies_Cell_Types_Human_Peripheral_Blood.pdf with small modifications indicated in sim2_params_set.R. 
+The range of cell proportions are from https://www.stemcell.com/media/files/wallchart/WA10006-Frequencies_Cell_Types_Human_Peripheral_Blood.pdf with small modifications indicated in sim2_params_set.R. 
