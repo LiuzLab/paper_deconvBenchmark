@@ -98,7 +98,7 @@ sim2_params_ob@extract_pattern_immune <- all_patterns
 # apply simulation based on hierarchical probability model 
 # Lymphocytes: 14 - 47
 #+ T: 7 - 24
-#++ CD4T: 4 - 20 *We use the same proportion as T to investigate impact of reference collineraty without chaning the range (CD4T 7 - 24 in actual simulation)
+#++ CD4T: 4 - 20 *We use the same proportion as T to investigate impact of reference collinearity without chaning the range (CD4T 7 - 24 in actual simulation)
 #++ CD8T: 2 - 11
 #+ B: 1 - 7
 #++ Naive B: 0.7 - 4.9
