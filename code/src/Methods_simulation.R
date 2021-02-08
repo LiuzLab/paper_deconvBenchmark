@@ -137,6 +137,7 @@ setMethod(f = "set_nb_params",
           }
 )
 #@ generate one set of nb simulation 
+# The code in the function is adapted from the source code in Law et al. Genome Biology 2014 Feb 3;15(2):R29, PMID: 24485249.
 setMethod(f = "sim_gammaPoisson",
           signature = c("nb_params", "matrix"),
           definition = function(nb_param, reference){
