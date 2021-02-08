@@ -98,7 +98,7 @@ sim2_params_ob@extract_pattern_immune <- all_patterns
 # apply simulation based on hierarchical probability model 
 # Lymphocytes: 14 - 47
 #+ T: 7 - 24
-#++ CD4T: 4 - 20
+#++ CD4T: 4 - 20 *We use the same proportion as T to investigate impact of reference collineraty without chaning the range (CD4T 7 - 24 in actual simulation)
 #++ CD8T: 2 - 11
 #+ B: 1 - 7
 #++ Naive B: 0.7 - 4.9
@@ -109,7 +109,7 @@ sim2_params_ob@extract_pattern_immune <- all_patterns
 #++ Neutrophils: 30 - 80
 #++ Eosinophils: 0 - 7 
 #+ Monocytes: 2 - 12
-#+ DC: 0.3 - 0.9
+#+ DC: 0.3 - 0.9 *We used myeloidDC and use proportion of DC to compensate other missing cell types in the blood (myeloidDC 0.3 - 0.9 in actual simulation)
 # HSC: 0.03 - 0.06
 sim2_prop_mat <- list()
 sim2_prop_mat[[1]] <- rbind(T = c(7, 24), B = c(1, 7), Mono = c(2, 12), Neutro = c(30, 80), NK = c(1, 6))
