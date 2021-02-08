@@ -1,6 +1,6 @@
 # paper_deconvBenchmark
 
-We have included all the analysis of the deconvolution benchmark paper in the manuscript Jin et al., "A comprehensive benchmark of deconvolution methods for RNA-seq data". 
+We have included all the analysis of the deconvolution benchmark paper in the manuscript Jin et al., "A benchmark for RNA-seq deconvolution analysis under dynamic testing environments". 
 
 ## Data
 All the data described in the manuscript will be available in the following figshare link, https://figshare.com/projects/Data_for_the_manuscript_A_benchmark_for_RNA-seq_deconvolution_analysis_under_dynamic_testing_environments_/96908
